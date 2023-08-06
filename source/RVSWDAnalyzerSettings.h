@@ -1,14 +1,14 @@
-#ifndef SWD_ANALYZER_SETTINGS
-#define SWD_ANALYZER_SETTINGS
+#ifndef RVSWD_ANALYZER_SETTINGS
+#define RVSWD_ANALYZER_SETTINGS
 
 #include <AnalyzerSettings.h>
 #include <AnalyzerTypes.h>
 
-class SWDAnalyzerSettings : public AnalyzerSettings
+class RVSWDAnalyzerSettings : public AnalyzerSettings
 {
 public:
-	SWDAnalyzerSettings();
-	virtual ~SWDAnalyzerSettings();
+	RVSWDAnalyzerSettings();
+	virtual ~RVSWDAnalyzerSettings();
 
 	virtual bool SetSettingsFromInterfaces();
 	void UpdateInterfacesFromSettings();
@@ -16,12 +16,12 @@ public:
 	virtual const char* SaveSettings();
 
 	
-	Channel mSWDIOChannel;
+	Channel mRVSWDIOChannel;
 	Channel mSWCLKChannel;
 
 protected:
-	std::auto_ptr< AnalyzerSettingInterfaceChannel >	mSWDIOChannelInterface;
+	std::auto_ptr< AnalyzerSettingInterfaceChannel >	mRVSWDIOChannelInterface;
 	std::auto_ptr< AnalyzerSettingInterfaceChannel >	mSWCLKChannelInterface;
 };
 
-#endif //SWD_ANALYZER_SETTINGS
+#endif //RVSWD_ANALYZER_SETTINGS

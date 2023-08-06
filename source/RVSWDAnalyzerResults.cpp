@@ -1,46 +1,18 @@
-/*
-    The SW-DP protocol is described by the following publicly available documents:
-
-    DDI 0316 CoreSight™ DAP-Lite Technical Reference Manual
-    http://infocenter.arm.com/help/topic/com.arm.doc.ddi0316d/DDI0316D_dap_lite_trm.pdf
-
-    Programming Internal Flash Over the Serial Wire Debug Interface
-    http://www.silabs.com/Support%20Documents/TechnicalDocs/AN0062.pdf
-
-    CY8C41xx, CY8C42xx Programming Specifications
-    http://www.cypress.com/?docID=48133
-
-    SW-DP (Serial Wire Debug Port) Analyzer plugin for the Saleae Logic
-
-    Copyright (C) 2015 Peter Lawrence.  All rights reserved.
-
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU Lesser General Public License version 2.1, as
-    published by the Free Software Foundation.  This program is
-    distributed in the hope that it will be useful, but WITHOUT ANY
-    WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public
-    License for more details.
-
-    You should have received a copy of the GNU Lesser General Public License
-    along with this program; if not, see <http://www.gnu.org/licenses/>.
-*/
-
-#include "SWDAnalyzerResults.h"
+#include "RVSWDAnalyzerResults.h"
 #include <AnalyzerHelpers.h>
-#include "SWDAnalyzer.h"
-#include "SWDAnalyzerSettings.h"
+#include "RVSWDAnalyzer.h"
+#include "RVSWDAnalyzerSettings.h"
 #include <iostream>
 #include <fstream>
 
-SWDAnalyzerResults::SWDAnalyzerResults( SWDAnalyzer* analyzer, SWDAnalyzerSettings* settings )
+RVSWDAnalyzerResults::RVSWDAnalyzerResults( RVSWDAnalyzer* analyzer, RVSWDAnalyzerSettings* settings )
 :	AnalyzerResults(),
 	mSettings( settings ),
 	mAnalyzer( analyzer )
 {
 }
 
-SWDAnalyzerResults::~SWDAnalyzerResults()
+RVSWDAnalyzerResults::~RVSWDAnalyzerResults()
 {
 }
 
@@ -98,19 +70,19 @@ static void build_string ( char *number_str, Frame *frame )
 	}
 }
 
-void SWDAnalyzerResults::GenerateBubbleText( U64 frame_index, Channel& channel, DisplayBase display_base )
+void RVSWDAnalyzerResults::GenerateBubbleText( U64 frame_index, Channel& channel, DisplayBase display_base )
 {
 	ClearResultStrings();
 	Frame frame = GetFrame( frame_index );
 
 	char number_str[128];
-
+	
 	build_string(number_str, &frame);
 
-	AddResultString( number_str );
+	//AddResultString( number_str );
 }
 
-void SWDAnalyzerResults::GenerateExportFile( const char* file, DisplayBase display_base, U32 export_type_user_id )
+void RVSWDAnalyzerResults::GenerateExportFile( const char* file, DisplayBase display_base, U32 export_type_user_id )
 {
 	std::ofstream file_stream( file, std::ios::out );
 
@@ -142,7 +114,7 @@ void SWDAnalyzerResults::GenerateExportFile( const char* file, DisplayBase displ
 	file_stream.close();
 }
 
-void SWDAnalyzerResults::GenerateFrameTabularText( U64 frame_index, DisplayBase display_base )
+void RVSWDAnalyzerResults::GenerateFrameTabularText( U64 frame_index, DisplayBase display_base )
 {
 	Frame frame = GetFrame( frame_index );
 	ClearTabularText();
@@ -152,12 +124,12 @@ void SWDAnalyzerResults::GenerateFrameTabularText( U64 frame_index, DisplayBase 
 	AddTabularText( number_str );
 }
 
-void SWDAnalyzerResults::GeneratePacketTabularText( U64 packet_id, DisplayBase display_base )
+void RVSWDAnalyzerResults::GeneratePacketTabularText( U64 packet_id, DisplayBase display_base )
 {
 	//not supported
 }
 
-void SWDAnalyzerResults::GenerateTransactionTabularText( U64 transaction_id, DisplayBase display_base )
+void RVSWDAnalyzerResults::GenerateTransactionTabularText( U64 transaction_id, DisplayBase display_base )
 {
 	//not supported
 }

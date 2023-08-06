@@ -1,21 +1,21 @@
-#ifndef SWD_SIMULATION_DATA_GENERATOR
-#define SWD_SIMULATION_DATA_GENERATOR
+#ifndef RVSWD_SIMULATION_DATA_GENERATOR
+#define RVSWD_SIMULATION_DATA_GENERATOR
 
 #include <SimulationChannelDescriptor.h>
 #include <string>
-class SWDAnalyzerSettings;
+class RVSWDAnalyzerSettings;
 
-class SWDSimulationDataGenerator
+class RVSWDSimulationDataGenerator
 {
 public:
-	SWDSimulationDataGenerator();
-	~SWDSimulationDataGenerator();
+	RVSWDSimulationDataGenerator();
+	~RVSWDSimulationDataGenerator();
 
-	void Initialize( U32 simulation_sample_rate, SWDAnalyzerSettings* settings );
+	void Initialize( U32 simulation_sample_rate, RVSWDAnalyzerSettings* settings );
 	U32 GenerateSimulationData( U64 newest_sample_requested, U32 sample_rate, SimulationChannelDescriptor** simulation_channel );
 
 protected:
-	SWDAnalyzerSettings* mSettings;
+	RVSWDAnalyzerSettings* mSettings;
 	U32 mSimulationSampleRateHz;
 
 protected:
@@ -26,4 +26,4 @@ protected:
 	SimulationChannelDescriptor mSerialSimulationData;
 
 };
-#endif //SWD_SIMULATION_DATA_GENERATOR
+#endif //RVSWD_SIMULATION_DATA_GENERATOR

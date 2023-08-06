@@ -1,16 +1,4 @@
-## SW-DP (Serial Wire Debug Port) Analyzer plugin for the Saleae Logic
-
-The SW-DP protocol is described by the following publicly available documents:
-
-[DDI 0316 CoreSight™ DAP-Lite Technical Reference Manual](http://infocenter.arm.com/help/topic/com.arm.doc.ddi0316d/DDI0316D_dap_lite_trm.pdf)
-
-[Programming Internal Flash Over the Serial Wire Debug Interface](http://www.silabs.com/Support%20Documents/TechnicalDocs/AN0062.pdf)
-
-[CY8C41xx, CY8C42xx Programming Specifications](http://www.cypress.com/?docID=48133)
-
-## Background
-
-This was written in 2013, long before Saleae started bundling their own "SWD" analyzer.  I continue to find that this analyzer decodes transactions that the Saleae offering seems unable to.
+## RVSWD Analyzer plugin for the Saleae Logic, for the WCH riscV chipsets
 
 ## Building
 
