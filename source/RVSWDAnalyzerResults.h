@@ -2,6 +2,11 @@
 #define RVSWD_ANALYZER_RESULTS
 
 #include <AnalyzerResults.h>
+enum RVFRameTypes {
+	RV_Long,
+	RV_Short
+};
+
 
 class RVSWDAnalyzer;
 class RVSWDAnalyzerSettings;

@@ -9,13 +9,17 @@
 class RVSWDAnalyzerSettings;
 class ANALYZER_EXPORT RVSWDAnalyzer : public Analyzer2
 {
+	struct bit {
+		U64 start;
+		U64 end;
+		U16 pos;
+	};
 public:
 	RVSWDAnalyzer();
 	virtual ~RVSWDAnalyzer();
 
 	virtual void SetupResults();
 	virtual void WorkerThread();
-	virtual void lookupStart();
 	virtual void advance_io();
 	virtual void advance_clk();
 
@@ -24,6 +28,8 @@ public:
 
 	virtual const char* GetAnalyzerName() const;
 	virtual bool NeedsRerun();
+	U32 bit2num(std::string);
+	void parse(std::string, std::vector<bit>);
 
 protected: //vars
 	std::auto_ptr< RVSWDAnalyzerSettings > mSettings;
@@ -33,6 +39,7 @@ protected: //vars
 
 	RVSWDSimulationDataGenerator mSimulationDataGenerator;
 	bool mSimulationInitialized;
+	
 };
 
 extern "C" ANALYZER_EXPORT const char* __cdecl GetAnalyzerName();
