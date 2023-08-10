@@ -20,8 +20,8 @@ public:
 	Channel mSWCLKChannel;
 
 protected:
-	std::auto_ptr< AnalyzerSettingInterfaceChannel >	mRVSWDIOChannelInterface;
-	std::auto_ptr< AnalyzerSettingInterfaceChannel >	mSWCLKChannelInterface;
+	std::unique_ptr< AnalyzerSettingInterfaceChannel >	mRVSWDIOChannelInterface;
+	std::unique_ptr< AnalyzerSettingInterfaceChannel >	mSWCLKChannelInterface;
 };
 
 #endif //RVSWD_ANALYZER_SETTINGS
